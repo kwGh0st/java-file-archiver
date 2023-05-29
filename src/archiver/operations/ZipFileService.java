@@ -9,14 +9,14 @@ import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
 
 public abstract class ZipFileService {
-    private final Path zipFileDestination;
+    private final Path zipFile;
 
     public ZipFileService(Path zipFile) {
-        this.zipFileDestination = zipFile;
+        this.zipFile = zipFile;
     }
 
-    public Path getZipFileDestination() {
-        return zipFileDestination;
+    public Path getZipFile() {
+        return zipFile;
     }
 
     protected void copyData(InputStream in, OutputStream out) throws IOException {

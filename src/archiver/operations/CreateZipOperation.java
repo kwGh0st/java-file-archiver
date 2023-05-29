@@ -1,5 +1,6 @@
 package archiver.operations;
 
+import archiver.ConsoleHelper;
 import archiver.exception.PathNotFoundException;
 import archiver.files.FileManager;
 
@@ -19,7 +20,7 @@ public class CreateZipOperation extends ZipFileService {
 
         if (Files.notExists(zipDirectory)) Files.createDirectories(zipDirectory);
 
-        try (ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(getZipFileDestination()))) {
+        try (ZipOutputStream zipOutputStream = new ZipOutputStream(Files.newOutputStream(getZipFile()))) {
 
             if (Files.isDirectory(source)) {
                 FileManager fileManager = new FileManager(source);
@@ -37,5 +38,7 @@ public class CreateZipOperation extends ZipFileService {
                 throw new PathNotFoundException();
             }
         }
+
+        ConsoleHelper.writeMessage("Archive created.");
     }
 }
