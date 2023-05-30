@@ -25,6 +25,7 @@ public class Archiver {
         ConsoleHelper.writeMessage("Select an operation:");
         ConsoleHelper.writeMessage(String.format("\t %d - Zip files into an archive", Operation.CREATE.ordinal()));
         ConsoleHelper.writeMessage(String.format("\t %d - Add file/s into an archive", Operation.ADD.ordinal()));
+        ConsoleHelper.writeMessage(String.format("\t %d - Extract files from zip archive", Operation.EXTRACT.ordinal()));
         ConsoleHelper.writeMessage(String.format("\t %d - Exit", Operation.EXIT.ordinal()));
 
         return Operation.values()[ConsoleHelper.readInt()];
