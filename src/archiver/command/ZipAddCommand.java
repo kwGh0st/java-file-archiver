@@ -13,7 +13,7 @@ public class ZipAddCommand implements Command {
         ConsoleHelper.writeMessage("Enter the destination path ");
         Path destinationPath = Paths.get(ConsoleHelper.readString());
         ConsoleHelper.writeMessage("Enter the source path");
-        Path source = Paths.get(ConsoleHelper.readString());
-        new AddZipOperation(destinationPath).addFile(source);
+        Path files = Paths.get(ConsoleHelper.readString());
+        new AddZipOperation(destinationPath).addFile(files);
     }
 }

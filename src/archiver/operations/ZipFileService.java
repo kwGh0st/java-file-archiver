@@ -20,10 +20,9 @@ public abstract class ZipFileService {
     }
 
     protected void copyData(InputStream in, OutputStream out) throws IOException {
-        byte[] buffer = new byte[1024];
+        byte[] buffer = new byte[8 * 1024];
         int len;
-
-        while ((len = in.read()) > 0) {
+        while ((len = in.read(buffer)) > 0) {
             out.write(buffer, 0, len);
         }
     }

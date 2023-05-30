@@ -2,6 +2,7 @@ package archiver.operations;
 
 import archiver.ConsoleHelper;
 import archiver.exception.NoSuchZipFileException;
+import archiver.exception.PathNotFoundException;
 
 import java.io.File;
 import java.io.IOException;
@@ -22,7 +23,7 @@ public class AddZipOperation extends ZipFileService {
         super(zipFile);
     }
 
-    public void addFile(Path file) throws NoSuchZipFileException, IOException {
+    public void addFile(Path file) throws NoSuchZipFileException, IOException, PathNotFoundException {
         if (Files.isDirectory(file)) {
             for (File f : Objects.requireNonNull(file.toFile().listFiles())) {
                 addFiles(Collections.singletonList(f.toPath()));
@@ -32,7 +33,7 @@ public class AddZipOperation extends ZipFileService {
         addFiles(Collections.singletonList(file));
     }
 
-    public void addFiles(List<Path> files) throws NoSuchZipFileException, IOException {
+    public void addFiles(List<Path> files) throws NoSuchZipFileException, IOException, PathNotFoundException {
         if (!Files.isRegularFile(getZipFile())) throw new NoSuchZipFileException();
 
         Path tmpFile = Files.createTempFile(null, null);
@@ -54,18 +55,17 @@ public class AddZipOperation extends ZipFileService {
 
                     entry = zipInputStream.getNextEntry();
                 }
-
-                for (Path file : files) {
-                    if (Files.isRegularFile(file)) {
-                        if (archiveFiles.contains(file.getFileName())) {
-                            ConsoleHelper.writeMessage(String.format("File %s already exists in the archive.", file));
-                        } else {
-                            addNewZipEntry(zipOutputStream, file.getParent(), file.getFileName());
-                            ConsoleHelper.writeMessage(String.format("File %s added to the archive.", file));
-                        }
+            }
+            for (Path file : files) {
+                if (Files.isRegularFile(file)) {
+                    if (archiveFiles.contains(file.getFileName())) {
+                        ConsoleHelper.writeMessage(String.format("File %s already exists in the archive.", file));
                     } else {
-                        throw new NoSuchZipFileException();
+                        addNewZipEntry(zipOutputStream, file.getParent(), file.getFileName());
+                        ConsoleHelper.writeMessage(String.format("File %s added to the archive.", file));
                     }
+                } else {
+                    throw new PathNotFoundException();
                 }
             }
         }
