@@ -23,6 +23,7 @@ public class Archiver {
     private static Operation askOperation() throws Exception {
         ConsoleHelper.writeMessage("");
         ConsoleHelper.writeMessage("Select an operation:");
+        ConsoleHelper.writeMessage(String.format("\t %d - Add file/s into an archive", Operation.ADD.ordinal()));
         ConsoleHelper.writeMessage(String.format("\t %d - Zip files into an archive", Operation.CREATE.ordinal()));
         ConsoleHelper.writeMessage(String.format("\t %d - Exit", Operation.EXIT.ordinal()));
 
