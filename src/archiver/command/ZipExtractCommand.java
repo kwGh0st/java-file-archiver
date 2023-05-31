@@ -1,13 +1,12 @@
 package archiver.command;
 
 import archiver.ConsoleHelper;
-import archiver.exception.PathNotFoundException;
 import archiver.operations.ExtractAllZipOperation;
-
 import java.nio.file.Path;
 import java.nio.file.Paths;
 
 public class ZipExtractCommand implements Command {
+
     @Override
     public void execute() throws Exception {
         ConsoleHelper.writeMessage("Select archive to unpacked");
@@ -17,4 +16,5 @@ public class ZipExtractCommand implements Command {
         new ExtractAllZipOperation(archive).extractAll(outputFolder);
         ConsoleHelper.writeMessage("Archive unpacked");
     }
+
 }
