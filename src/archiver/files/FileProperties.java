@@ -30,4 +30,27 @@ public class FileProperties {
         return compressionMethod;
     }
 
+    public long getCompressionRatio() {
+        // Calculate the compression ratio
+        return 100 - ((compressedSize * 100) / size);
+    }
+
+    @Override
+    public String toString() {
+        // Make a pretty string of properties
+        StringBuilder builder = new StringBuilder();
+        builder.append(name);
+        if (size > 0) {
+            builder.append("\t");
+            builder.append(size / 1024);
+            builder.append(" KB (");
+            builder.append(compressedSize / 1024);
+            builder.append(" KB) compression: ");
+            builder.append(getCompressionRatio());
+            builder.append("%");
+        }
+
+        return builder.toString();
+    }
+
 }
