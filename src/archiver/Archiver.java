@@ -2,10 +2,12 @@ package archiver;
 
 import archiver.command.CommandExecutor;
 import archiver.exception.NoSuchZipFileException;
+import archiver.gui.ArchiverGui;
 import archiver.operations.Operation;
 
 public class Archiver {
     public static void main(String[] args) {
+        new ArchiverGui();
         Operation operation = null;
 
         do {
