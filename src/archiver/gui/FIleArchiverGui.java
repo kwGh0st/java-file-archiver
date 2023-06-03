@@ -1,31 +1,49 @@
 package archiver.gui;
 
+import archiver.operations.AddZipOperation;
 import archiver.operations.CreateZipOperation;
 
 import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.nio.file.Path;
-import java.nio.file.Paths;
+
 
 public class FIleArchiverGui extends JFrame{
     private JPanel panel;
-    private JTextField textField1;
-    private JTextField textField2;
-    private JButton createZip;
-    private JLabel label1;
-    private JLabel label2;
+    private JButton createZipButton;
+    private JButton addButton;
+    private JFileChooser fileChooser;
+
 
     FIleArchiverGui() {
         this.setTitle("File Archiver");
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setBounds(250, 500, 300, 200);
         this.setContentPane(panel);
-        createZip.addActionListener(e -> {
-            Path destinationPath = Paths.get(textField1.getText());
-            Path sourcePath = Paths.get(textField2.getText());
+        this.setResizable(false);
+
+        createZipButton.addActionListener(e -> {
+            fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            fileChooser.showOpenDialog(this);
+            Path destination = fileChooser.getSelectedFile().toPath();
+            fileChooser.showOpenDialog(this);
+            Path source = fileChooser.getSelectedFile().toPath();
             try {
-                new CreateZipOperation(destinationPath).createZip(sourcePath);
+                new CreateZipOperation(destination).createZip(source);
+            } catch (Exception ex) {
+                ex.printStackTrace();
+            }
+        });
+
+        addButton.addActionListener(e -> {
+            fileChooser = new JFileChooser();
+            fileChooser.setFileSelectionMode(JFileChooser.FILES_AND_DIRECTORIES);
+            fileChooser.showOpenDialog(this);
+            Path destination = fileChooser.getSelectedFile().toPath();
+            fileChooser.showOpenDialog(this);
+            Path source = fileChooser.getSelectedFile().toPath();
+            try {
+                new AddZipOperation(destination).addFile(source);
             } catch (Exception ex) {
                 ex.printStackTrace();
             }
