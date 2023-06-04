@@ -11,7 +11,7 @@ public class FileArchiverGui extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         FXMLLoader fxmlLoader = new FXMLLoader(FileArchiverGui.class.getResource("file-archiver.fxml"));
-        Scene scene = new Scene(fxmlLoader.load(), 320, 240);
+        Scene scene = new Scene(fxmlLoader.load(), 480, 380);
         stage.setTitle("File Archiver");
         stage.setScene(scene);
         stage.show();
