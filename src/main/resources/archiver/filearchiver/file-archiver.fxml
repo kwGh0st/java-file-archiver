@@ -10,65 +10,38 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1">
-   <children>
-      <MenuBar layoutX="6.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <menus>
-          <Menu mnemonicParsing="false" text="File">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Close" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Edit">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Delete" />
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Help">
-            <items>
-              <MenuItem mnemonicParsing="false" text="About" />
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <SplitPane dividerPositions="0.18498659517426275" layoutX="55.0" layoutY="47.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
-        <items>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
-               <children>
-                  <GridPane layoutX="29.0" layoutY="-12.0" prefHeight="66.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-                    <columnConstraints>
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <GridPane>
-                           <columnConstraints>
-                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-                           </columnConstraints>
-                           <rowConstraints>
-                              <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-                           </rowConstraints>
-                           <children>
-                              <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="492.0" prefWidth="703.0" text="Create Zip" />
-                           </children>
-                        </GridPane>
-                        <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="669.0" prefWidth="1133.0" text="Remove Zip" GridPane.columnIndex="1" />
-                        <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="583.0" prefWidth="1010.0" text="Add files" GridPane.columnIndex="2" />
-                        <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="665.0" prefWidth="895.0" text="Show Content" GridPane.columnIndex="3" />
-                        <Button mnemonicParsing="false" pickOnBounds="false" prefHeight="638.0" prefWidth="771.0" text="Extract" GridPane.columnIndex="4" />
-                     </children>
-                  </GridPane>
-               </children>
-            </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="598.0" />
-        </items>
-      </SplitPane>
-   </children>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="archiver.filearchiver.controllers.ButtonController">
+    <MenuBar layoutX="6.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <Menu mnemonicParsing="false" text="File">
+            <MenuItem mnemonicParsing="false" text="Close" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Edit">
+            <MenuItem mnemonicParsing="false" text="Delete" />
+        </Menu>
+        <Menu mnemonicParsing="false" text="Help">
+            <MenuItem mnemonicParsing="false" text="About" />
+        </Menu>
+    </MenuBar>
+    <SplitPane dividerPositions="0.18498659517426275" layoutX="55.0" layoutY="47.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="25.0">
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+            <GridPane layoutX="29.0" layoutY="-12.0" prefHeight="66.0" prefWidth="598.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                </rowConstraints>
+                <Button fx:id="removeZip" mnemonicParsing="false" onAction="#onRemoveZipButtonClick" pickOnBounds="false" prefHeight="669.0" prefWidth="1133.0" text="Remove Zip" GridPane.columnIndex="1" />
+                <Button fx:id="addFiles" mnemonicParsing="false" onAction="#onAddFilesButtonClick" pickOnBounds="false" prefHeight="583.0" prefWidth="1010.0" text="Add files" GridPane.columnIndex="2" />
+                <Button fx:id="showContent" mnemonicParsing="false" onAction="#onShowContentButtonClick" pickOnBounds="false" prefHeight="665.0" prefWidth="895.0" text="Show Content" GridPane.columnIndex="3" />
+                <Button fx:id="extractAll" mnemonicParsing="false" onAction="#onExtractAllButtonClick" pickOnBounds="false" prefHeight="638.0" prefWidth="771.0" text="Extract" GridPane.columnIndex="4" />
+                <Button fx:id="createZip" mnemonicParsing="false" onAction="#onCreateZipButtonClick" prefHeight="748.0" prefWidth="1402.0" text="Create Zip" />
+            </GridPane>
+        </AnchorPane>
+        <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="598.0" />
+    </SplitPane>
 </AnchorPane>

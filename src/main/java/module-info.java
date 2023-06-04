@@ -5,5 +5,10 @@ module archiver.filearchiver {
 
 
     opens archiver.filearchiver to javafx.fxml;
+    opens archiver.filearchiver.controllers to javafx.fxml;
+
     exports archiver.filearchiver;
+    exports archiver.filearchiver.controllers;
+
+
 }
