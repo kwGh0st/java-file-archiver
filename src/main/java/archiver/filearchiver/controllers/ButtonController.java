@@ -2,21 +2,17 @@ package archiver.filearchiver.controllers;
 
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.files.FileProperties;
+import archiver.filearchiver.model.CreateZip;
 import archiver.filearchiver.model.ShowContent;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
-import java.util.Collections;
-import java.util.List;
 
 public class ButtonController {
     @FXML
@@ -35,6 +31,7 @@ public class ButtonController {
     @FXML
     void onShowContentButtonClick(ActionEvent event) throws NoSuchZipFileException, IOException {
         FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select zip file");
         fileChooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Zip Files", "*.zip"));
 
@@ -49,12 +46,19 @@ public class ButtonController {
     }
 
     @FXML
-    void onExtractAllButtonClick(ActionEvent event) {
+    void onCreateZipButtonClick(ActionEvent event) throws Exception {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select destination zip file");
+        Path destinationPath = fileChooser.showOpenDialog(createZip.getContextMenu()).toPath();
+        DirectoryChooser directoryChooser = new DirectoryChooser();
+        directoryChooser.setTitle("Select directory you want to zip");
+        Path source = directoryChooser.showDialog(createZip.getContextMenu()).toPath();
+        new CreateZip(destinationPath).createZip(source);
 
     }
 
     @FXML
-    void onCreateZipButtonClick(ActionEvent event) {
+    void onExtractAllButtonClick(ActionEvent event) {
 
     }
 
