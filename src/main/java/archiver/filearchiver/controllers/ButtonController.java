@@ -1,7 +1,9 @@
 package archiver.filearchiver.controllers;
 
 import archiver.filearchiver.exception.NoSuchZipFileException;
+import archiver.filearchiver.exception.PathNotFoundException;
 import archiver.filearchiver.files.FileProperties;
+import archiver.filearchiver.model.AddFiles;
 import archiver.filearchiver.model.CreateZip;
 import archiver.filearchiver.model.ShowContent;
 import javafx.event.ActionEvent;
@@ -11,8 +13,11 @@ import javafx.scene.control.ListView;
 import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 
+import java.io.File;
 import java.io.IOException;
 import java.nio.file.Path;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ButtonController {
     @FXML
@@ -58,17 +63,29 @@ public class ButtonController {
     }
 
     @FXML
+    void onAddFilesButtonClick(ActionEvent event) throws NoSuchZipFileException, IOException, PathNotFoundException {
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Select destination zip file");
+        Path destinationPath = fileChooser.showOpenDialog(addFiles.getContextMenu()).toPath();
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Select file/s you want to add.");
+        List<File> files = fileChooser.showOpenMultipleDialog(addFiles.getContextMenu());
+        List<Path> pathList = new ArrayList<>();
+
+        for (File file : files) {
+            pathList.add(file.toPath());
+        }
+
+        new AddFiles(destinationPath).addFiles(pathList);
+    }
+
+    @FXML
     void onExtractAllButtonClick(ActionEvent event) {
 
     }
 
     @FXML
     void onRemoveZipButtonClick(ActionEvent event) {
-
-    }
-
-    @FXML
-    void onAddFilesButtonClick(ActionEvent event) {
 
     }
 
