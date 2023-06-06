@@ -13,13 +13,13 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/19" xmlns:fx="http://javafx.com/fxml/1" fx:controller="archiver.filearchiver.controllers.ButtonController">
     <MenuBar layoutX="6.0" layoutY="8.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
-        <Menu mnemonicParsing="false" text="File">
+        <Menu mnemonicParsing="false" disable="true" text="File">
             <MenuItem mnemonicParsing="false" text="Close" />
         </Menu>
-        <Menu mnemonicParsing="false" text="Edit">
+        <Menu mnemonicParsing="false" disable="true" text="Edit">
             <MenuItem mnemonicParsing="false" text="Delete" />
         </Menu>
-        <Menu mnemonicParsing="false" text="Help">
+        <Menu mnemonicParsing="false" disable="true" text="Help">
             <MenuItem mnemonicParsing="false" text="About" />
         </Menu>
     </MenuBar>
@@ -40,7 +40,7 @@
                 <Button fx:id="loadFile" mnemonicParsing="false" onAction="#onLoadFileButtonClick" pickOnBounds="false" prefHeight="665.0" prefWidth="895.0" text="Load File" GridPane.columnIndex="1" />
                 <Button fx:id="extractAll" mnemonicParsing="false" onAction="#onExtractAllButtonClick" pickOnBounds="false" prefHeight="638.0" prefWidth="771.0" text="Extract" GridPane.columnIndex="4" />
                 <Button fx:id="createZip" mnemonicParsing="false" onAction="#onCreateZipButtonClick" prefHeight="748.0" prefWidth="1402.0" text="Create Zip" />
-                <Button fx:id="removeFiles" disable="true" mnemonicParsing="false" onAction="#onRemoveFilesButtonClick" pickOnBounds="false" prefHeight="669.0" prefWidth="1133.0" text="Remove Files" GridPane.columnIndex="3" />
+                <Button fx:id="removeFiles" mnemonicParsing="false" onAction="#onRemoveFilesButtonClick" pickOnBounds="false" prefHeight="789.0" prefWidth="865.0" text="Remove Files" GridPane.columnIndex="3" />
             </GridPane>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="598.0">
