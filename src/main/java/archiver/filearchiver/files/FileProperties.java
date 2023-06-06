@@ -40,10 +40,10 @@ public class FileProperties {
         builder.append("File name: ");
         builder.append(name);
         if (size > 0) {
-            builder.append("Normal size: ");
+            builder.append(" Normal size: ");
             builder.append(size / 1024);
             builder.append(" KB (");
-            builder.append("Compressed Size: ");
+            builder.append(" Compressed Size: ");
             builder.append(compressedSize / 1024);
             builder.append(" KB) compression: ");
             builder.append(getCompressionRatio());

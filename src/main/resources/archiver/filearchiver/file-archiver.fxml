@@ -36,17 +36,15 @@
                 <rowConstraints>
                     <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                 </rowConstraints>
-                <Button fx:id="removeZip" mnemonicParsing="false" onAction="#onRemoveZipButtonClick" pickOnBounds="false" prefHeight="669.0" prefWidth="1133.0" text="Remove Zip" GridPane.columnIndex="1" />
                 <Button fx:id="addFiles" mnemonicParsing="false" onAction="#onAddFilesButtonClick" pickOnBounds="false" prefHeight="583.0" prefWidth="1010.0" text="Add files" GridPane.columnIndex="2" />
-                <Button fx:id="showContent" mnemonicParsing="false" onAction="#onShowContentButtonClick" pickOnBounds="false" prefHeight="665.0" prefWidth="895.0" text="Show Content" GridPane.columnIndex="3" />
+                <Button fx:id="loadFile" mnemonicParsing="false" onAction="#onLoadFileButtonClick" pickOnBounds="false" prefHeight="665.0" prefWidth="895.0" text="Load File" GridPane.columnIndex="1" />
                 <Button fx:id="extractAll" mnemonicParsing="false" onAction="#onExtractAllButtonClick" pickOnBounds="false" prefHeight="638.0" prefWidth="771.0" text="Extract" GridPane.columnIndex="4" />
                 <Button fx:id="createZip" mnemonicParsing="false" onAction="#onCreateZipButtonClick" prefHeight="748.0" prefWidth="1402.0" text="Create Zip" />
+                <Button fx:id="removeFiles" disable="true" mnemonicParsing="false" onAction="#onRemoveFilesButtonClick" pickOnBounds="false" prefHeight="669.0" prefWidth="1133.0" text="Remove Files" GridPane.columnIndex="3" />
             </GridPane>
         </AnchorPane>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="200.0" prefWidth="598.0">
-            <ListView fx:id="fileList" layoutX="89.0" layoutY="61.0" prefHeight="464.0" prefWidth="898.0"
-                      AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0"
-                      AnchorPane.topAnchor="0.0"/>
+            <ListView fx:id="fileList" layoutX="89.0" layoutY="61.0" prefHeight="464.0" prefWidth="898.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
         </AnchorPane>
     </SplitPane>
 </AnchorPane>
