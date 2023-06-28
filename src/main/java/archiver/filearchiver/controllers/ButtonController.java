@@ -1,5 +1,6 @@
 package archiver.filearchiver.controllers;
 
+import archiver.filearchiver.controllers.services.CreateZipService;
 import archiver.filearchiver.controllers.services.LoadFileService;
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.exception.PathNotFoundException;
@@ -56,24 +57,8 @@ public class ButtonController {
     }
 
     @FXML
-    void onCreateZipButtonClick(ActionEvent event) throws Exception {
-        fileList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select destination zip file");
-        Path destinationPath = fileChooser.showOpenDialog(createZip.getContextMenu()).toPath();
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Select directory you want to zip");
-        Path source = directoryChooser.showDialog(createZip.getContextMenu()).toPath();
-        new CreateZip(destinationPath).createZip(source);
-
-        ShowContent showContent = new ShowContent(destinationPath);
-
-        if (fileList.getItems().size() > 0) fileList.getItems().remove(0, fileList.getItems().size());
-
-        for (FileProperties content : showContent.getFileList()) {
-            fileList.getItems().add(content.toString());
-        }
+    void onCreateZipButtonClick() throws Exception {
+        new CreateZipService(fileList, createZip);
     }
 
     @FXML
