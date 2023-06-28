@@ -1,9 +1,11 @@
 package archiver.filearchiver.controllers;
 
+import archiver.filearchiver.controllers.services.LoadFileService;
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.exception.PathNotFoundException;
 import archiver.filearchiver.files.FileProperties;
 import archiver.filearchiver.model.*;
+import javafx.concurrent.Service;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -49,22 +51,8 @@ public class ButtonController {
     private static Path zipSourceToRemove;
 
     @FXML
-    void onLoadFileButtonClick(ActionEvent event) throws NoSuchZipFileException, IOException {
-        fileList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select zip file");
-        fileChooser.getExtensionFilters().addAll(
-                new FileChooser.ExtensionFilter("Zip Files", "*.zip"));
-
-        Path destinationPath = fileChooser.showOpenDialog(loadFile.getContextMenu()).toPath();
-        ShowContent showContent = new ShowContent(destinationPath);
-
-        if (fileList.getItems().size() > 0) fileList.getItems().remove(0, fileList.getItems().size());
-
-        for (FileProperties content : showContent.getFileList()) {
-            fileList.getItems().add(content.toString());
-        }
+    void onLoadFileButtonClick() throws NoSuchZipFileException, IOException {
+        new LoadFileService(loadFile, fileList);
     }
 
     @FXML
