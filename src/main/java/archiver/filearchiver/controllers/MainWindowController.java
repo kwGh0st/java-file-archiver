@@ -6,7 +6,7 @@ import archiver.filearchiver.controllers.services.ExtractFilesService;
 import archiver.filearchiver.controllers.services.LoadFileService;
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.exception.PathNotFoundException;
-import archiver.filearchiver.model.*;
+import archiver.filearchiver.model.operations.RemoveFiles;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -24,7 +24,7 @@ import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
-public class ButtonController {
+public class MainWindowController {
     @FXML
     private Button select;
     @FXML

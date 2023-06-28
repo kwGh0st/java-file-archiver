@@ -1,7 +1,7 @@
 package archiver.filearchiver.controllers.services;
 
 import archiver.filearchiver.exception.NoSuchZipFileException;
-import archiver.filearchiver.model.ExtractZip;
+import archiver.filearchiver.model.operations.ExtractZip;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.stage.DirectoryChooser;

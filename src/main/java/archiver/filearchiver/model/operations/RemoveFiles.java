@@ -1,6 +1,7 @@
-package archiver.filearchiver.model;
+package archiver.filearchiver.model.operations;
 
 import archiver.filearchiver.exception.NoSuchZipFileException;
+import archiver.filearchiver.model.ZipFileManager;
 
 import java.io.IOException;
 import java.nio.file.Files;

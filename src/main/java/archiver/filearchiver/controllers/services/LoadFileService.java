@@ -3,7 +3,7 @@ package archiver.filearchiver.controllers.services;
 
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.files.FileProperties;
-import archiver.filearchiver.model.ShowContent;
+import archiver.filearchiver.model.operations.ShowContent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;

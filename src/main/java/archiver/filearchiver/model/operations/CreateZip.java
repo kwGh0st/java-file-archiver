@@ -1,7 +1,8 @@
-package archiver.filearchiver.model;
+package archiver.filearchiver.model.operations;
 
 import archiver.filearchiver.exception.PathNotFoundException;
 import archiver.filearchiver.files.FileManager;
+import archiver.filearchiver.model.ZipFileManager;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
