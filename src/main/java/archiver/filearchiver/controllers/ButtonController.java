@@ -2,12 +2,11 @@ package archiver.filearchiver.controllers;
 
 import archiver.filearchiver.controllers.services.AddFilesService;
 import archiver.filearchiver.controllers.services.CreateZipService;
+import archiver.filearchiver.controllers.services.ExtractFilesService;
 import archiver.filearchiver.controllers.services.LoadFileService;
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.exception.PathNotFoundException;
-import archiver.filearchiver.files.FileProperties;
 import archiver.filearchiver.model.*;
-import javafx.concurrent.Service;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -15,18 +14,14 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
-import javafx.stage.DirectoryChooser;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
-
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 
@@ -69,19 +64,7 @@ public class ButtonController {
 
     @FXML
     void onExtractAllButtonClick(ActionEvent event) throws NoSuchZipFileException, IOException {
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select zip file to extract.");
-        Path source = fileChooser.showOpenDialog(extractAll.getContextMenu()).toPath();
-        DirectoryChooser directoryChooser = new DirectoryChooser();
-        directoryChooser.setTitle("Select destination directory");
-        Path directory = directoryChooser.showDialog(extractAll.getContextMenu()).toPath();
-        new ExtractZip(source).extractAll(directory);
-
-        if (fileList.getItems().size() > 0) fileList.getItems().remove(0, fileList.getItems().size());
-
-        for (File file : Objects.requireNonNull(directory.toFile().listFiles())) {
-            fileList.getItems().add(file.getAbsolutePath());
-        }
+        new ExtractFilesService(fileList, extractAll);
     }
 
     @FXML
