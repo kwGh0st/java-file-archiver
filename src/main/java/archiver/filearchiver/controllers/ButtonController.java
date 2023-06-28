@@ -1,5 +1,6 @@
 package archiver.filearchiver.controllers;
 
+import archiver.filearchiver.controllers.services.AddFilesService;
 import archiver.filearchiver.controllers.services.CreateZipService;
 import archiver.filearchiver.controllers.services.LoadFileService;
 import archiver.filearchiver.exception.NoSuchZipFileException;
@@ -62,30 +63,8 @@ public class ButtonController {
     }
 
     @FXML
-    void onAddFilesButtonClick(ActionEvent event) throws NoSuchZipFileException, IOException, PathNotFoundException {
-        fileList.getSelectionModel().setSelectionMode(SelectionMode.MULTIPLE);
-
-        FileChooser fileChooser = new FileChooser();
-        fileChooser.setTitle("Select destination zip file");
-        Path destinationPath = fileChooser.showOpenDialog(addFiles.getContextMenu()).toPath();
-        fileChooser = new FileChooser();
-        fileChooser.setTitle("Select file/s you want to add.");
-        List<File> files = fileChooser.showOpenMultipleDialog(addFiles.getContextMenu());
-        List<Path> pathList = new ArrayList<>();
-
-        for (File file : files) {
-            pathList.add(file.toPath());
-        }
-
-        new AddFiles(destinationPath).addFiles(pathList);
-
-        ShowContent showContent = new ShowContent(destinationPath);
-
-        if (fileList.getItems().size() > 0) fileList.getItems().remove(0, fileList.getItems().size());
-
-        for (FileProperties content : showContent.getFileList()) {
-            fileList.getItems().add(content.toString());
-        }
+    void onAddFilesButtonClick() throws NoSuchZipFileException, IOException, PathNotFoundException {
+        new AddFilesService(fileList, addFiles);
     }
 
     @FXML
