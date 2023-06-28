@@ -7,7 +7,6 @@ import archiver.filearchiver.controllers.services.LoadFileService;
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.exception.PathNotFoundException;
 import archiver.filearchiver.model.*;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -63,12 +62,12 @@ public class ButtonController {
     }
 
     @FXML
-    void onExtractAllButtonClick(ActionEvent event) throws NoSuchZipFileException, IOException {
+    void onExtractAllButtonClick() throws NoSuchZipFileException, IOException {
         new ExtractFilesService(fileList, extractAll);
     }
 
     @FXML
-    void onRemoveFilesButtonClick(ActionEvent event) throws IOException {
+    void onRemoveFilesButtonClick() throws IOException {
 
         FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource("delete-list.fxml"));
         Scene scene = new Scene(fxmlLoader.load(), 480, 380);
@@ -80,7 +79,7 @@ public class ButtonController {
     }
 
     @FXML
-    private void onSelectButtonClick(ActionEvent event) throws IOException {
+    private void onSelectButtonClick() throws IOException {
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Select source archive.");
         fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("Zip File", "*.zip"));
@@ -112,12 +111,9 @@ public class ButtonController {
     }
 
     @FXML
-    private void onDeleteButtonClick(ActionEvent event) throws NoSuchZipFileException, IOException {
+    private void onDeleteButtonClick() throws NoSuchZipFileException, IOException {
         List<Path> files = filesToDelete.getSelectionModel().getSelectedItems();
-        for (Path path : files) {
-            new RemoveFiles(zipSourceToRemove).removeFile(path);
-        }
-
+        new RemoveFiles(zipSourceToRemove).removeFiles(files);
         updateList(files, filesToDelete);
     }
 

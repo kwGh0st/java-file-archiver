@@ -7,7 +7,6 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
-import java.util.Collections;
 import java.util.List;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
@@ -16,10 +15,6 @@ import java.util.zip.ZipOutputStream;
 public class RemoveFiles extends ZipFileManager {
     public RemoveFiles(Path zipFile) {
         super(zipFile);
-    }
-
-    public void removeFile(Path path) throws NoSuchZipFileException, IOException {
-        removeFiles(Collections.singletonList(path));
     }
 
     public void removeFiles(List<Path> pathList) throws NoSuchZipFileException, IOException {

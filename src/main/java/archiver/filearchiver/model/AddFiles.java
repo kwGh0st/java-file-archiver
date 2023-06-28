@@ -3,16 +3,13 @@ package archiver.filearchiver.model;
 import archiver.filearchiver.exception.NoSuchZipFileException;
 import archiver.filearchiver.exception.PathNotFoundException;
 
-import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
-import java.util.Objects;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipInputStream;
 import java.util.zip.ZipOutputStream;
@@ -21,18 +18,6 @@ public class AddFiles extends ZipFileManager {
 
     public AddFiles(Path zipFile) {
         super(zipFile);
-    }
-
-    public void addFile(Path file) throws NoSuchZipFileException, IOException, PathNotFoundException {
-
-        if (Files.isDirectory(file)) {
-            for (File f : Objects.requireNonNull(file.toFile().listFiles())) {
-                addFiles(Collections.singletonList(f.toPath()));
-            }
-            return;
-        }
-
-        addFiles(Collections.singletonList(file));
     }
 
     public void addFiles(List<Path> files) throws NoSuchZipFileException, IOException, PathNotFoundException {
@@ -60,10 +45,8 @@ public class AddFiles extends ZipFileManager {
             }
             for (Path file : files) {
                 if (Files.isRegularFile(file)) {
-                    if (archiveFiles.contains(file.getFileName())) {
-                    } else {
+                    if (!archiveFiles.contains(file.getFileName()))
                         addNewZipEntry(zipOutputStream, file.getParent(), file.getFileName());
-                    }
                 } else {
                     throw new PathNotFoundException();
                 }

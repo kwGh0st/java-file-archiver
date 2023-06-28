@@ -30,7 +30,7 @@ public class ShowContent extends ZipFileManager {
             while (entry != null) {
                 ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
                 copyData(zipInputStream, outputStream);
-                files.add(new FileProperties(entry.getName(), entry.getSize(), entry.getCompressedSize(), entry.getMethod()));
+                files.add(new FileProperties(entry.getName(), entry.getSize(), entry.getCompressedSize()));
 
                 entry = zipInputStream.getNextEntry();
             }

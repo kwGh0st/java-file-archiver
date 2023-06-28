@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.Objects;
 
 public class FileManager {
-    private Path rootPath;
-    private List<Path> fileList;
+    private final Path rootPath;
+    private final List<Path> fileList;
 
     public FileManager(Path rootPath) {
         this.rootPath = rootPath;
