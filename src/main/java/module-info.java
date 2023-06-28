@@ -9,6 +9,7 @@ module archiver.filearchiver {
 
     exports archiver.filearchiver;
     exports archiver.filearchiver.controllers;
+    exports archiver.filearchiver.view;
 
 
 }
